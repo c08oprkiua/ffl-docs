@@ -1,0 +1,81 @@
+ /**
+ * @defgroup MiiVersion
+ *
+ * The version of FFL the Mii was created with.
+ */
+
+/**
+ * @defgroup Copyable 
+ * 
+ * Defines if the Mii is copyable
+ * 
+ */
+
+/**
+ * @defgroup NgWord
+ * 
+ * Flags the Mii if its name or creator fields contain profanity.
+ */
+
+/**
+ * @defgroup RegionMove
+ * 
+ * Applies restrictions to which region(s) the Mii can go.
+ * 
+ */
+
+/**
+ * @defgroup LocalOnly
+ * 
+ * Flag for if the Mii should only be available to the local console. 
+ */
+
+/**
+ * @defgroup FontRegion
+ * 
+ * This tells the console which font file to use for displaying the Mii's string data.
+ * Not to be confused with RegionMove
+ */
+
+/**
+ * @defgroup BirthPlatform
+ * 
+ * Defines which Nintendo console was originally created on.
+ */
+
+/**
+ * @defgroup Gender
+ * 
+ * Defines whether the Mii is a boy or girl.
+ */
+
+/**
+ * @defgroup BirthMonth
+ * 
+ * Defines which month the Mii's settable birthday is in.
+ */
+
+/**
+ * @defgroup BirthDay 
+ * 
+ * Defines which day the Mii's settable birthday is in.
+ */
+
+/**
+ * @defgroup FavoriteColor
+ * 
+ * The Mii's favorite color. 
+ */
+
+/**
+ * @defgroup FavoriteMii
+ * 
+ * Defines if the Mii is a favorite Mii or not.
+ */
+
+/**
+ * @defgroup Name
+ * 
+ * The Mii's name. If it contains profanity, it will be flag @ref NgWord
+ */
+

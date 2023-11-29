@@ -169,7 +169,7 @@ public:
     /** @ingroup getters 
      * @brief Get the original platform the Mii was created on.
      * 
-     * @return u16: See FFLBirthPlatform.
+     * @return u16: See @ref BirthPlatform.
      */
     u16 BirthPlatform() const
     {
