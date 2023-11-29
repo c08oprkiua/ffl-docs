@@ -7,12 +7,17 @@
 extern "C" {
 #endif
 
+/// @brief Enumeration for which platform the Mii was originally created on. 
 typedef enum FFLBirthPlatform
 {
-    FFL_BIRTH_PLATFORM_WII     = 1,
-    FFL_BIRTH_PLATFORM_NTR     = 2,
-    FFL_BIRTH_PLATFORM_CTR     = 3,
-    FFL_BIRTH_PLATFORM_WII_U   = 4
+    //! This Mii was made on a Wii.
+    FFL_BIRTH_PLATFORM_WII     = 1, 
+    //! This Mii was made on a DS or DSi.
+    FFL_BIRTH_PLATFORM_NTR     = 2, 
+    //! This Mii was made on a 3DS.
+    FFL_BIRTH_PLATFORM_CTR     = 3, 
+    //! This Mii was made on a Wii U or Switch.
+    FFL_BIRTH_PLATFORM_WII_U   = 4 
 }
 FFLBirthPlatform;
 

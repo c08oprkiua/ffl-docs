@@ -6,12 +6,22 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+/**
+ * @typedef FFLFontRegion
+ * 
+ * @brief Enumeration for the font file used for the Mii.
+ * The font region tells software which font file to use when displaying the text fields of a Mii.
+ * 
+*/
 typedef enum FFLFontRegion
 {
+    //! Japan, Europe, and USA font file.
     FFL_FONT_REGION_0   = 0,
+    //! Chinese font file.
     FFL_FONT_REGION_1   = 1,
+    //! Korean font file.
     FFL_FONT_REGION_2   = 2,
+    //! Taiwan font file.
     FFL_FONT_REGION_3   = 3
 }
 FFLFontRegion;

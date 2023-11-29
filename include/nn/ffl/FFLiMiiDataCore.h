@@ -11,34 +11,72 @@
 //       However, the 3DS compiler orders fields in bitfield structs such that the first field is at the LSB.
 //       Therefore, if you would like to use these structures for 3DS, make sure to reverse the order of fields in every bitfield struct.
 
+/**
+ * @brief The core Mii data type used by FFLi.
+ * 
+ * This is likely "the" class people are looking for when looking through Mii data. It contains most of the data associated with a Mii (but not all).
+ * 
+ * 
+*/
+
 class FFLiMiiDataCore
 {
 public:
+    /** @defgroup setters "Set" Functions
+     * @ingroup setters
+     * @brief Set the Mii's version.
+     * 
+     * @param version The Mii version.
+    */
     void SetMiiVersion(u8 version)
     {
         m_MiiVersion = version;
     }
-
+    /** @defgroup getters "Get" Functions
+     * @ingroup getters
+     * 
+     * @brief Get the Mii's version.
+    */
     u8 MiiVersion() const
     {
         return m_MiiVersion;
     }
-
+    /**
+     * @ingroup setters
+     * @brief Set if the Mii is copyable or not.
+     * 
+     * @param enable Whether or not the Mii can be copied.
+     */
     void SetCopyable(bool enable)
     {
         m_Copyable = enable;
     }
-
+    /**
+     * @ingroup getters
+     * 
+     * @brief Get the value of whether or not the Mii is copyable.
+     * 
+     * @return true: Mii is copyable.
+     * @return false: Mii is not copyable.
+     */
     bool Copyable() const
     {
         return m_Copyable;
     }
-
+    /**
+     * Set the profanity flag on the Mii.
+     * 
+     * This will be enabled if the Mii contains profanity in either its creator or name field.
+    */
     void SetNgWord(bool enable)
     {
         m_NgWord = enable;
     }
-
+    /**
+     * Get the profanity flag on the Mii.
+     * 
+     * This will be enabled if the Mii contains profanity in either its creator or name field.
+    */
     bool NgWord() const
     {
         return m_NgWord;
@@ -53,17 +91,33 @@ public:
     {
         return m_RegionMove;
     }
-
+    /**
+     * @ingroup setters
+     * @brief Set whether or not the Mii is local only.
+     * 
+     * @param localOnly 
+     */
     void SetLocalOnly(bool localOnly)
     {
         m_LocalOnly = localOnly;
     }
-
+    /**
+     * @ingroup getters
+     * @brief Get whether or not the Mii is local only.
+     * 
+     * @return true: The Mii is local only.
+     * @return false: The Mii is not local only.
+     */
     bool LocalOnly() const
     {
         return m_LocalOnly;
     }
-
+    /**
+     * @ingroup setters
+     * @brief Set the Font Region.
+     * 
+     * @param region A FFLFontRegion enum. 
+     */
     void SetFontRegion(u16 region)
     {
         m_FontRegion = region;
@@ -103,12 +157,20 @@ public:
     {
         return _0_24_27;
     }
-
+    /** @ingroup setters 
+     * @brief The original platform the Mii was created on.
+     * 
+     * @param platform The platform the Mii was created on. See FFLBirthPlatform.
+    */
     void SetBirthPlatform(u16 platform)
     {
         m_BirthPlatform = platform;
     }
-
+    /** @ingroup getters 
+     * @brief Get the original platform the Mii was created on.
+     * 
+     * @return u16: See FFLBirthPlatform.
+     */
     u16 BirthPlatform() const
     {
         return m_BirthPlatform;
@@ -143,12 +205,18 @@ public:
     {
         return sizeof(u8) * 2;
     }
-
+    /**
+     * @ingroup setters
+     * @brief Set the gender of the Mii.
+    */
     void SetGender(u16 gender)
     {
         m_Gender = gender;
     }
-
+    /**
+     * @ingroup getters
+     * @brief Get the gender of the Mii.
+    */
     u16 Gender() const
     {
         return m_Gender;
@@ -882,7 +950,12 @@ NN_STATIC_ASSERT_IS_POD(FFLiMiiDataOfficial);
 NN_STATIC_ASSERT(sizeof(FFLiMiiDataOfficial) == 0x5C);
 
 #define FFL_STOREDATA_SIZE  (0x60)
-
+/**
+ * @brief Internal FFLStoreData type
+ * 
+ * This is FFLStoreData/FFLiStoreDataCFL converted to big endian, 
+ * and is what the Wii U internally uses for processing Mii data.
+ */
 class FFLiStoreData : public FFLiMiiDataOfficial
 {
 public:
@@ -895,6 +968,15 @@ private:
 };
 NN_STATIC_ASSERT_IS_POD(FFLiStoreData);
 NN_STATIC_ASSERT(sizeof(FFLiStoreData) == FFL_STOREDATA_SIZE);
+
+
+/**
+ * @typedef FFLStoreData
+ * @brief A type of Mii data structure that is used to share Mii data around. 
+ * 
+ * For example, this type is present in the SysAppMiiMakerArgs struct of WUT. 
+ * Basically an alias of FFLiStoreDataCFL.
+ */
 
 struct FFLiStoreDataCFL : FFLStoreData
 {
