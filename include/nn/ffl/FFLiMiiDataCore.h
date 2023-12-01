@@ -12,13 +12,22 @@
 //       Therefore, if you would like to use these structures for 3DS, make sure to reverse the order of fields in every bitfield struct.
 
 /**
- * @brief The core Mii data type used by FFLi.
+ * @defgroup MiiDataCore MiiDataCore
  * 
- * This is likely "the" class people are looking for when looking through Mii data. It contains most of the data associated with a Mii (but not all).
+ * @brief The various data types of Miis.
  * 
- * 
+ * These are various forms of Mii data that FFL uses, both internal and external.
+ */
 */
 
+
+
+/**
+ * @brief The core Mii data type used by FFL.
+ * 
+ * This is the base class from which various other data types derive.
+ * 
+*/
 class FFLiMiiDataCore
 {
 public:
@@ -53,7 +62,6 @@ public:
     }
     /**
      * @ingroup getters
-     * 
      * @brief Get the value of whether or not the Mii is copyable.
      * 
      * @return true: Mii is copyable.
@@ -64,7 +72,8 @@ public:
         return m_Copyable;
     }
     /**
-     * Set the profanity flag on the Mii.
+     * @ingroup setters
+     * @brief Set the profanity flag on the Mii.
      * 
      * This will be enabled if the Mii contains profanity in either its creator or name field.
     */
@@ -73,7 +82,8 @@ public:
         m_NgWord = enable;
     }
     /**
-     * Get the profanity flag on the Mii.
+     * @ingroup getters
+     * @brief Get the profanity flag on the Mii.
      * 
      * This will be enabled if the Mii contains profanity in either its creator or name field.
     */
@@ -743,6 +753,8 @@ private:
             u32 m_NgWord        : 1;    // bool
             //! Whether the Mii is copyable
             u32 m_Copyable      : 1;    // bool
+
+            //! The Mii's version
             u32 m_MiiVersion    : 8;    // (LSB)
         };
 
@@ -1025,11 +1037,10 @@ NN_STATIC_ASSERT(sizeof(FFLiStoreData) == FFL_STOREDATA_SIZE);
 
 
 /**
- * @typedef FFLStoreData
+ * @typedef FFLStoreDataCFL
  * @brief A type of Mii data structure that is used to share Mii data around. 
  * 
- * For example, this type is present in the SysAppMiiMakerArgs struct of WUT. 
- * Basically an alias of FFLiStoreDataCFL.
+ * Essentially an alias of FFLStoreData.
  */
 
 struct FFLiStoreDataCFL : FFLStoreData
@@ -1048,7 +1059,13 @@ private:
 };
 NN_STATIC_ASSERT_IS_POD(FFLiMiiDataHidden);
 NN_STATIC_ASSERT(sizeof(FFLiMiiDataHidden) == 0x54);
-
+/**
+ * 
+ * @brief A type of Mii data structure that is used to share Mii data around. 
+ * 
+ * This is similar to FFLStoreData, but happens to be even smaller.
+ * It uses bitshift operators internally as opposed to bitfields, making it more compiler-agnostic(?).
+ */
 class FFLiMiiDataCoreRFL
 {
 public:
