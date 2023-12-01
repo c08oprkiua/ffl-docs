@@ -725,16 +725,23 @@ private:
         struct
         {
             u32                 : 1;    // Unused (MSB)
+            //! The platform the Mii was made on
             u32 m_BirthPlatform : 3;
             u32 _0_24_27        : 4;
 
+            //! The Mii's slot index in Mii Maker
             u32 m_SlotIndex     : 4;
+            //! The Mii's page index in Mii Maker
             u32 m_PageIndex     : 4;
 
             u32                 : 2;    // Unused
+            //! The font file for the system to use with this Mii.
             u32 m_FontRegion    : 2;
+            //! The region lock imposed on the Mii.
             u32 m_RegionMove    : 2;
+            //! Whether the Mii's name or creator name contains profanity (to censor out)
             u32 m_NgWord        : 1;    // bool
+            //! Whether the Mii is copyable
             u32 m_Copyable      : 1;    // bool
             u32 m_MiiVersion    : 8;    // (LSB)
         };
@@ -762,10 +769,15 @@ private:
         struct
         {
             u16 m_PlaceHolder   : 1;    // Unused (MSB)
+            //! Whether the Mii is favorited in Mii Maker
             u16 m_FavoriteMii   : 1;    // bool
+            //! The Mii's shirt color
             u16 m_FavoriteColor : 4;
+            //! The Mii's birthday day
             u16 m_BirthDay      : 5;
+            //! The Mii's birthday month
             u16 m_BirthMonth    : 4;
+            //! The Mii's gender
             u16 m_Gender        : 1;    // (LSB)
         };
 
@@ -781,10 +793,14 @@ private:
     {
         struct
         {
+            //! The Mii's makeup
             u16 m_FaceMakeup    : 4;    // (MSB)
             u16 m_FaceLine      : 4;
+            //! The Mii's skin color
             u16 m_FacelineColor : 3;
+            //! The Mii's facial structure
             u16 m_FaceType      : 4;
+            //! Whether the Mii is local only
             u16 m_LocalOnly     : 1;    // bool (LSB)
         };
 
@@ -795,8 +811,11 @@ private:
         struct
         {
             u16             : 4;    // Unused (MSB)
+            //! If the hair is flipped
             u16 m_HairDir   : 1;
+            //! The color of the Mii's hair
             u16 m_HairColor : 3;
+            //! The Mii's hair style
             u16 m_HairType  : 8;    // (LSB)
         };
 
@@ -806,9 +825,13 @@ private:
     {
         struct
         {
+            //! The y stretch scale of the Mii's eyes
             u16 m_EyeScaleY : 3;    // (MSB)
+            //! The x stretch scale of the Mii's eyes
             u16 m_EyeScale  : 4;
+            //! The color of the Mii's eyes
             u16 m_EyeColor  : 3;
+            //! The type of eyes the Mii has
             u16 m_EyeType   : 6;    // (LSB)
         };
 
@@ -819,8 +842,11 @@ private:
         struct
         {
             u16                     : 2;    // Unused (MSB)
+            //! The vertical placement of the Mii's eyes on its face
             u16 m_EyePositionY      : 5;
+            //! The spacing between the Mii's eyes
             u16 m_EyeSpacingX       : 4;
+            //! The rotation of the Mii's eyes
             u16 m_EyeRotate         : 5;    // (LSB)
         };
 
@@ -831,9 +857,13 @@ private:
         struct
         {
             u16                 : 1;    // Unused (MSB)
+            //! The vertical thickness of the Mii's eyebrows
             u16 m_EyebrowScaleY : 3;
+            //! The horizontal thickness of the Mii's eyebrows
             u16 m_EyebrowScale  : 4;
+            //! The color of the Mii's eyebrows
             u16 m_EyebrowColor  : 3;
+            //! The style of the Mii's eyebrows
             u16 m_EyebrowType   : 5;    // (LSB)
         };
 
@@ -844,8 +874,11 @@ private:
         struct
         {
             u16                         : 2;    // Unused (MSB)
+            //! The vertical placement of the eyebrows on the Mii's face
             u16 m_EyebrowPositionY      : 5;
+            //! The spacing between the Mii's eyebrows
             u16 m_EyebrowSpacingX       : 4;
+            //! The rotation of the Mii's eyebrows
             u16 m_EyebrowRotate         : 5;    // (LSB)
         };
 
@@ -856,8 +889,11 @@ private:
         struct
         {
             u16                 : 2;    // Unused (MSB)
+            //! The vertical placement of the Mii's nose
             u16 m_NosePositionY : 5;
+            //! The size of the Mii's nose
             u16 m_NoseScale     : 4;
+            //! The shape of the Mii's nose
             u16 m_NoseType      : 5;    // (LSB)
         };
 
@@ -867,9 +903,13 @@ private:
     {
         struct
         {
+            //! The vertical scale of the Mii's mouth
             u16 m_MouthScaleY   : 3;    // (MSB)
+            //! The horizontal scale of the Mii's mouth
             u16 m_MouthScale    : 4;
+            //! The color of the Mii's lips (for types that have colors)
             u16 m_MouthColor    : 3;
+            //! The mouth type of the Mii
             u16 m_MouthType     : 6;    // (LSB)
         };
 
@@ -880,7 +920,9 @@ private:
         struct
         {
             u16                     : 8;    // Unused (MSB)
+            //! The type of mustache the Mii has
             u16 m_MustacheType      : 3;
+            //! The vertical placement of the Mii's mouth
             u16 m_MouthPositionY    : 5;    // (LSB)
         };
 
@@ -891,9 +933,13 @@ private:
         struct
         {
             u16                     : 1;    // Unused (MSB)
+            //! The vertical position of the Mii's mustache
             u16 m_MustachePositionY : 5;
+            //! The size of the Mii's mustache
             u16 m_MustacheScale     : 4;
+            //! The color of the Mii's beard
             u16 m_BeardColor        : 3;
+            //! The type of beard the Mii has
             u16 m_BeardType         : 3;    // (LSB)
         };
 
@@ -903,9 +949,13 @@ private:
     {
         struct
         {
+            //! The vertical position of the Mii's glasses
             u16 m_GlassPositionY    : 5;    // (MSB)
+            //! The size of the Mii's glasses
             u16 m_GlassScale        : 4;
+            //! The color of the Mii's glasses
             u16 m_GlassColor        : 3;
+            //! The type of glasses the Mii has
             u16 m_GlassType         : 4;    // (LSB)
         };
 
@@ -916,9 +966,13 @@ private:
         struct
         {
             u16                 : 1;    // Unused (MSB)
+            //! The vertical position of the Mii's mole
             u16 m_MolePositionY : 5;
+            //! The horizontal position of the Mii's mole
             u16 m_MolePositionX : 5;
+            //! The size of the Mii's mole
             u16 m_MoleScale     : 4;
+            //! Whether or not the Mii's mole is visible
             u16 m_MoleType      : 1;    // (LSB)
         };
 

@@ -38,9 +38,39 @@
  */
 
 /**
+ * @defgroup PageIndex
+ * 
+ * The page index of where the Mii is in Mii Maker.
+ */
+
+/**
+ * @defgroup SlotIndex
+ * 
+ * The slot index where the Mii is in Mii Maker.
+ */
+
+/**
+ * @defgroup FlagBit24To27
+ * 
+ * (Information incomplete)
+ */
+
+/**
  * @defgroup BirthPlatform
  * 
  * Defines which Nintendo console was originally created on.
+ */
+
+/**
+ * @defgroup AuthorID
+ * 
+ * The author ID
+ */
+
+/**
+ * @defgroup CreatorID
+ * 
+ * The creator ID
  */
 
 /**
@@ -79,3 +109,20 @@
  * The Mii's name. If it contains profanity, it will be flag @ref NgWord
  */
 
+/**
+ * @defgroup Height
+ * 
+ * The height of the Mii.
+ */
+
+/**
+ * @defgroup Build
+ * 
+ * The width of the Mii.
+ */
+
+/**
+ * @defgroup Face
+ * 
+ * Attributes of the Mii's face.
+ */
