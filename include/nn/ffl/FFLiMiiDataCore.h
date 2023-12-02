@@ -1035,7 +1035,6 @@ private:
 NN_STATIC_ASSERT_IS_POD(FFLiStoreData);
 NN_STATIC_ASSERT(sizeof(FFLiStoreData) == FFL_STOREDATA_SIZE);
 
-
 /**
  * @typedef FFLStoreDataCFL
  * @brief A type of Mii data structure that is used to share Mii data around. 

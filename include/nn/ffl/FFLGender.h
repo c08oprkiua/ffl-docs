@@ -7,8 +7,7 @@
 extern "C" {
 #endif
 /**
- * The Mii's gender. 
- * 
+ * @brief The Mii's gender. 
  * 
 */
 typedef enum FFLGender
