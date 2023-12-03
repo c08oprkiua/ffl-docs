@@ -9,6 +9,11 @@ extern "C" {
 
 #define FFL_CREATE_ID_SIZE  (10)
 
+/**
+ * @ingroup IDs
+ * @brief The main ID for Miis. 
+ * These are unique identifiers so that no two Miis are the same, even if they are otherwise identical.
+ */
 typedef struct FFLCreateID
 {
     union

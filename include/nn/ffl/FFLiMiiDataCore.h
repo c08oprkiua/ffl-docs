@@ -12,27 +12,25 @@
 //       Therefore, if you would like to use these structures for 3DS, make sure to reverse the order of fields in every bitfield struct.
 
 /**
- * @defgroup MiiDataCore MiiDataCore
+ * @defgroup MiiDataTypes Mii Data Types
  * 
  * @brief The various data types of Miis.
  * 
  * These are various forms of Mii data that FFL uses, both internal and external.
  */
-*/
-
-
 
 /**
+ * @ingroup MiiDataTypes
  * @brief The core Mii data type used by FFL.
  * 
  * This is the base class from which various other data types derive.
  * 
 */
+
 class FFLiMiiDataCore
 {
 public:
-    /** @defgroup setters "Set" Functions
-     * @ingroup setters
+    /** 
      * @brief Set the Mii's version.
      * 
      * @param version The Mii version.
@@ -41,8 +39,7 @@ public:
     {
         m_MiiVersion = version;
     }
-    /** @defgroup getters "Get" Functions
-     * @ingroup getters
+    /** 
      * 
      * @brief Get the Mii's version.
     */
@@ -51,7 +48,7 @@ public:
         return m_MiiVersion;
     }
     /**
-     * @ingroup setters
+     * 
      * @brief Set if the Mii is copyable or not.
      * 
      * @param enable Whether or not the Mii can be copied.
@@ -61,7 +58,7 @@ public:
         m_Copyable = enable;
     }
     /**
-     * @ingroup getters
+     * 
      * @brief Get the value of whether or not the Mii is copyable.
      * 
      * @return true: Mii is copyable.
@@ -72,7 +69,7 @@ public:
         return m_Copyable;
     }
     /**
-     * @ingroup setters
+     * 
      * @brief Set the profanity flag on the Mii.
      * 
      * This will be enabled if the Mii contains profanity in either its creator or name field.
@@ -82,7 +79,7 @@ public:
         m_NgWord = enable;
     }
     /**
-     * @ingroup getters
+     * @ingroup NgWord
      * @brief Get the profanity flag on the Mii.
      * 
      * This will be enabled if the Mii contains profanity in either its creator or name field.
@@ -102,7 +99,7 @@ public:
         return m_RegionMove;
     }
     /**
-     * @ingroup setters
+     * 
      * @brief Set whether or not the Mii is local only.
      * 
      * @param localOnly 
@@ -112,7 +109,7 @@ public:
         m_LocalOnly = localOnly;
     }
     /**
-     * @ingroup getters
+     * 
      * @brief Get whether or not the Mii is local only.
      * 
      * @return true: The Mii is local only.
@@ -123,10 +120,10 @@ public:
         return m_LocalOnly;
     }
     /**
-     * @ingroup setters
+     * 
      * @brief Set the Font Region.
      * 
-     * @param region A FFLFontRegion enum. 
+     * @param region A @ref FFLFontRegion enum. 
      */
     void SetFontRegion(u16 region)
     {
@@ -137,22 +134,36 @@ public:
     {
         return m_FontRegion;
     }
-
+    /**
+     * @brief Set the page index of the Mii in Mii Maker
+     * 
+     * @param index 
+     */
     void SetPageIndex(u16 index)
     {
         m_PageIndex = index;
     }
-
+    /**
+     * @brief Get the page index of the Mii in Mii Maker
+     * 
+     */
     u16 PageIndex() const
     {
         return m_PageIndex;
     }
-
+    /**
+     * @brief Set the slot index of the Mii in Mii Maker
+     * 
+     * @param index 
+     */
     void SetSlotIndex(u16 index)
     {
         m_SlotIndex = index;
     }
-
+    /**
+     * @brief Get the slot index of the Mii in Mii Maker
+     *  
+     */
     u16 SlotIndex() const
     {
         return m_SlotIndex;
@@ -167,16 +178,16 @@ public:
     {
         return _0_24_27;
     }
-    /** @ingroup setters 
+    /**
      * @brief The original platform the Mii was created on.
      * 
-     * @param platform The platform the Mii was created on. See FFLBirthPlatform.
+     * @param platform The platform the Mii was created on. See @ref FFLBirthPlatform.
     */
     void SetBirthPlatform(u16 platform)
     {
         m_BirthPlatform = platform;
     }
-    /** @ingroup getters 
+    /**
      * @brief Get the original platform the Mii was created on.
      * 
      * @return u16: See @ref BirthPlatform.
@@ -216,7 +227,7 @@ public:
         return sizeof(u8) * 2;
     }
     /**
-     * @ingroup setters
+     * 
      * @brief Set the gender of the Mii.
     */
     void SetGender(u16 gender)
@@ -224,7 +235,7 @@ public:
         m_Gender = gender;
     }
     /**
-     * @ingroup getters
+     * 
      * @brief Get the gender of the Mii.
     */
     u16 Gender() const
@@ -730,37 +741,94 @@ public:
     void SwapEndian();
 
 private:
+    /**
+     * @ingroup Meta
+     * @{
+     */
     union
     {
         struct
         {
+            /**
+             * @brief Unused data
+             */
             u32                 : 1;    // Unused (MSB)
-            //! The platform the Mii was made on
+            /**
+             * @ingroup Meta
+             * @brief The platform the Mii was made on
+             * 
+             * See FFLBirthPlatform for details
+             */
             u32 m_BirthPlatform : 3;
+            /**
+             * @ingroup Meta
+             * @brief Unknown data
+             * 
+             */
             u32 _0_24_27        : 4;
 
-            //! The Mii's slot index in Mii Maker
+            /**
+             * @ingroup Meta
+             * @brief The Mii's slot index in Mii Maker
+             * 
+             */
             u32 m_SlotIndex     : 4;
-            //! The Mii's page index in Mii Maker
+            /**
+             * @ingroup Meta
+             * @brief The Mii's page index in Mii Maker
+             * 
+             */
             u32 m_PageIndex     : 4;
 
             u32                 : 2;    // Unused
-            //! The font file for the system to use with this Mii.
+            /**
+             * @ingroup Meta
+             * @brief The font file for the system to use with this Mii.
+             * 
+             * This tells the console which font file to use for displaying the Mii's string data.
+             * Not to be confused with RegionMove.
+             */
             u32 m_FontRegion    : 2;
-            //! The region lock imposed on the Mii.
+            /**
+             * @ingroup Meta
+             * @brief The region lock imposed on the Mii.
+             * 
+             */
             u32 m_RegionMove    : 2;
-            //! Whether the Mii's name or creator name contains profanity (to censor out)
+            /**
+             * @ingroup Meta
+             * @brief Whether the Mii's name or creator name contains profanity
+             * 
+             * The values of the name and creator fields usually get externally overwritten with generic values when this is set
+             */
             u32 m_NgWord        : 1;    // bool
-            //! Whether the Mii is copyable
+            /**
+             * @ingroup Meta
+             * @brief Whether the Mii can be copied
+             * 
+             */
             u32 m_Copyable      : 1;    // bool
-
-            //! The Mii's version
+            /**
+             * @ingroup Meta
+             * @brief The version of FFL the Mii was created with(?)
+             * 
+             */
             u32 m_MiiVersion    : 8;    // (LSB)
         };
-
         u32 _0;
     };
+    /**
+     * @}
+     */
+    /**
+     * @ingroup IDs
+     * @{
+    */
 
+   /**
+    * @brief The Author's ID
+    * 
+    */
     union
     {
         FFLiAuthorID    m_AuthorID;
@@ -768,64 +836,132 @@ private:
         u8  _4[8];
     };
 
+    /**
+     * @brief The Creator's ID
+     * 
+     */
     union
     {
         FFLCreateID m_CreatorID;
 
         u8  _c[0xA];
     };
+    /**
+     * @}
+     */
     u8  _padding1[2];
-
+    /**
+     * @ingroup Meta
+     * @{
+     */
     union
     {
         struct
         {
             u16 m_PlaceHolder   : 1;    // Unused (MSB)
-            //! Whether the Mii is favorited in Mii Maker
+            /**
+             * @ingroup Meta
+             * @brief Whether the Mii is favorited in Mii Maker
+             */
             u16 m_FavoriteMii   : 1;    // bool
-            //! The Mii's shirt color
+            /**
+             * @ingroup Meta
+             * @brief The Mii's shirt color
+             */
             u16 m_FavoriteColor : 4;
-            //! The Mii's birthday day
+            /**
+             * @ingroup Meta
+             * @brief The day of the Mii's birthday
+             */
             u16 m_BirthDay      : 5;
-            //! The Mii's birthday month
+            /**
+             * @ingroup Meta
+             * @brief The month of the Mii's birthday
+             */
             u16 m_BirthMonth    : 4;
-            //! The Mii's gender
+            /**
+             * @ingroup Meta
+             * @brief The Mii's gender
+             */
             u16 m_Gender        : 1;    // (LSB)
         };
 
         u16 _18;
     };
-
+    /**
+     * @ingroup Meta
+     * @brief The Mii's name
+     * 
+     * This is a UTF-16 encoded value.
+     * If it contains profanity, FFL will flag NgWord
+     */
     u16 m_Name[10]; // Wstring
-
+    /**
+     * @ingroup Meta
+     * @brief The Mii's height
+     */
     u8  m_Height;
+    /**
+     * @ingroup Meta
+     * @brief The Mii's width
+     */
     u8  m_Build;
-
+    /**
+     * @}
+     */
+    /**
+     * @ingroup Face
+     * @{
+     */
     union
     {
         struct
         {
-            //! The Mii's makeup
+            /**
+             * @ingroup Face
+             * @brief The Mii's makeup
+             */
             u16 m_FaceMakeup    : 4;    // (MSB)
             u16 m_FaceLine      : 4;
-            //! The Mii's skin color
+            /**
+             * @ingroup Face
+             * @brief The Mii's skin color
+             */
             u16 m_FacelineColor : 3;
-            //! The Mii's facial structure
+            /**
+             * @ingroup Face
+             * @brief The Mii's facial structure
+             */
             u16 m_FaceType      : 4;
-            //! Whether the Mii is local only
+            /**
+             * @ingroup Meta
+             * @brief Whether the Mii is local only
+             */
             u16 m_LocalOnly     : 1;    // bool (LSB)
         };
 
         u16 _30;
     };
+    /**
+     * @}
+     */
+
     union
     {
         struct
         {
             u16             : 4;    // Unused (MSB)
-            //! If the hair is flipped
+            /**
+             * @ingroup Hair
+             * @brief If the hair is flipped
+             * 
+             */
             u16 m_HairDir   : 1;
-            //! The color of the Mii's hair
+            /**
+             * @ingroup Hair
+             * @brief The color of the Mii's hair
+             * 
+             */
             u16 m_HairColor : 3;
             //! The Mii's hair style
             u16 m_HairType  : 8;    // (LSB)
@@ -833,6 +969,7 @@ private:
 
         u16 _32;
     };
+
     union
     {
         struct
@@ -993,15 +1130,28 @@ private:
 };
 NN_STATIC_ASSERT_IS_POD(FFLiMiiDataCore);
 NN_STATIC_ASSERT(sizeof(FFLiMiiDataCore) == 0x48);
-
+/**
+ * @ingroup MiiDataTypes
+ * @brief An extension of @ref FFLiMiiDataCore that adds a creator name
+ * 
+ */
 class FFLiMiiDataOfficial : public FFLiMiiDataCore
 {
 public:
+    /**
+     * @brief Get the creator's name
+     * 
+     * @return u16* 
+     */
     u16* CreatorName()
     {
         return m_CreatorName;
     }
-
+    /**
+     * @brief Get the creator's name
+     * 
+     * @return u16* 
+     */
     const u16* CreatorName() const
     {
         return m_CreatorName;
@@ -1010,13 +1160,25 @@ public:
     void SwapEndian();
 
 private:
+    /**
+     * @brief The creator's name
+     * 
+     * Stored as a 10 character long UTF-16 string.
+     */
     u16 m_CreatorName[10];  // Wstring
 };
 NN_STATIC_ASSERT_IS_POD(FFLiMiiDataOfficial);
 NN_STATIC_ASSERT(sizeof(FFLiMiiDataOfficial) == 0x5C);
 
-#define FFL_STOREDATA_SIZE  (0x60)
 /**
+ * @brief It's asserted that this is the size of FFLStoreData
+ * 
+ */
+
+#define FFL_STOREDATA_SIZE  (0x60)
+
+/**
+ * @ingroup MiiDataTypes
  * @brief Internal FFLStoreData type
  * 
  * This is FFLStoreData/FFLiStoreDataCFL converted to big endian, 
@@ -1047,7 +1209,11 @@ struct FFLiStoreDataCFL : FFLStoreData
 };
 NN_STATIC_ASSERT_IS_POD(FFLiStoreDataCFL);
 NN_STATIC_ASSERT(sizeof(FFLiStoreDataCFL) == FFL_STOREDATA_SIZE);
-
+/**
+ * @ingroup MiiDataTypes
+ * @brief An extension of @ref FFLiMiiDataCore
+ * 
+ */
 class FFLiMiiDataHidden : public FFLiMiiDataCore
 {
 public:
@@ -1059,7 +1225,7 @@ private:
 NN_STATIC_ASSERT_IS_POD(FFLiMiiDataHidden);
 NN_STATIC_ASSERT(sizeof(FFLiMiiDataHidden) == 0x54);
 /**
- * 
+ * @ingroup MiiDataTypes
  * @brief A type of Mii data structure that is used to share Mii data around. 
  * 
  * This is similar to FFLStoreData, but happens to be even smaller.
