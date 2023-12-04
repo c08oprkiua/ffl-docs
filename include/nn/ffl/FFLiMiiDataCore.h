@@ -24,6 +24,8 @@
  * @brief The core Mii data type used by FFL.
  * 
  * This is the base class from which various other data types derive.
+ * The variables documented here are not public, and are instead accessed and retrieved with their corresponding set/get functions.
+ * This should be used as a reference, but @b not as an implementation; See @ref FFLiMiiDataCoreRFL and @ref FFLStoreData
  * 
 */
 
@@ -750,39 +752,37 @@ private:
         struct
         {
             /**
-             * @brief Unused data
+             * @brief Unused bits
              */
             u32                 : 1;    // Unused (MSB)
             /**
-             * @ingroup Meta
              * @brief The platform the Mii was made on
              * 
              * See FFLBirthPlatform for details
              */
             u32 m_BirthPlatform : 3;
             /**
-             * @ingroup Meta
              * @brief Unknown data
              * 
              */
             u32 _0_24_27        : 4;
 
             /**
-             * @ingroup Meta
              * @brief The Mii's slot index in Mii Maker
              * 
              */
             u32 m_SlotIndex     : 4;
             /**
-             * @ingroup Meta
              * @brief The Mii's page index in Mii Maker
              * 
              */
             u32 m_PageIndex     : 4;
 
+            /**
+             * @brief Unused bits
+             */
             u32                 : 2;    // Unused
             /**
-             * @ingroup Meta
              * @brief The font file for the system to use with this Mii.
              * 
              * This tells the console which font file to use for displaying the Mii's string data.
@@ -790,26 +790,22 @@ private:
              */
             u32 m_FontRegion    : 2;
             /**
-             * @ingroup Meta
              * @brief The region lock imposed on the Mii.
              * 
              */
             u32 m_RegionMove    : 2;
             /**
-             * @ingroup Meta
              * @brief Whether the Mii's name or creator name contains profanity
              * 
              * The values of the name and creator fields usually get externally overwritten with generic values when this is set
              */
             u32 m_NgWord        : 1;    // bool
             /**
-             * @ingroup Meta
              * @brief Whether the Mii can be copied
              * 
              */
             u32 m_Copyable      : 1;    // bool
             /**
-             * @ingroup Meta
              * @brief The version of FFL the Mii was created with(?)
              * 
              */
@@ -860,27 +856,22 @@ private:
         {
             u16 m_PlaceHolder   : 1;    // Unused (MSB)
             /**
-             * @ingroup Meta
              * @brief Whether the Mii is favorited in Mii Maker
              */
             u16 m_FavoriteMii   : 1;    // bool
             /**
-             * @ingroup Meta
              * @brief The Mii's shirt color
              */
             u16 m_FavoriteColor : 4;
             /**
-             * @ingroup Meta
              * @brief The day of the Mii's birthday
              */
             u16 m_BirthDay      : 5;
             /**
-             * @ingroup Meta
              * @brief The month of the Mii's birthday
              */
             u16 m_BirthMonth    : 4;
             /**
-             * @ingroup Meta
              * @brief The Mii's gender
              */
             u16 m_Gender        : 1;    // (LSB)
@@ -889,7 +880,6 @@ private:
         u16 _18;
     };
     /**
-     * @ingroup Meta
      * @brief The Mii's name
      * 
      * This is a UTF-16 encoded value.
@@ -897,12 +887,10 @@ private:
      */
     u16 m_Name[10]; // Wstring
     /**
-     * @ingroup Meta
      * @brief The Mii's height
      */
     u8  m_Height;
     /**
-     * @ingroup Meta
      * @brief The Mii's width
      */
     u8  m_Build;
@@ -918,22 +906,20 @@ private:
         struct
         {
             /**
-             * @ingroup Face
              * @brief The Mii's makeup
              */
             u16 m_FaceMakeup    : 4;    // (MSB)
             u16 m_FaceLine      : 4;
             /**
-             * @ingroup Face
              * @brief The Mii's skin color
              */
             u16 m_FacelineColor : 3;
             /**
-             * @ingroup Face
              * @brief The Mii's facial structure
              */
             u16 m_FaceType      : 4;
             /**
+             * 
              * @ingroup Meta
              * @brief Whether the Mii is local only
              */
@@ -945,20 +931,24 @@ private:
     /**
      * @}
      */
-
+    /**
+     * @ingroup Hair
+     * @{
+    */
     union
     {
         struct
         {
+            /**
+             * @brief Unused bits
+             */            
             u16             : 4;    // Unused (MSB)
             /**
-             * @ingroup Hair
              * @brief If the hair is flipped
              * 
              */
             u16 m_HairDir   : 1;
             /**
-             * @ingroup Hair
              * @brief The color of the Mii's hair
              * 
              */
@@ -969,7 +959,9 @@ private:
 
         u16 _32;
     };
-
+    /**
+     * @}
+     */
     union
     {
         struct
@@ -990,6 +982,9 @@ private:
     {
         struct
         {
+            /**
+             * @brief Unused bits
+             */
             u16                     : 2;    // Unused (MSB)
             //! The vertical placement of the Mii's eyes on its face
             u16 m_EyePositionY      : 5;
@@ -1005,6 +1000,9 @@ private:
     {
         struct
         {
+            /**
+             * @brief Unused bit
+             */            
             u16                 : 1;    // Unused (MSB)
             //! The vertical thickness of the Mii's eyebrows
             u16 m_EyebrowScaleY : 3;
@@ -1022,6 +1020,9 @@ private:
     {
         struct
         {
+            /**
+             * @brief Unused bits
+             */
             u16                         : 2;    // Unused (MSB)
             //! The vertical placement of the eyebrows on the Mii's face
             u16 m_EyebrowPositionY      : 5;
@@ -1037,6 +1038,9 @@ private:
     {
         struct
         {
+            /**
+             * @brief Unused bits
+             */
             u16                 : 2;    // Unused (MSB)
             //! The vertical placement of the Mii's nose
             u16 m_NosePositionY : 5;
@@ -1068,6 +1072,9 @@ private:
     {
         struct
         {
+            /**
+             * @brief Unused bits
+             */
             u16                     : 8;    // Unused (MSB)
             //! The type of mustache the Mii has
             u16 m_MustacheType      : 3;
@@ -1114,6 +1121,9 @@ private:
     {
         struct
         {
+            /**
+             * @brief Unused bits
+             */
             u16                 : 1;    // Unused (MSB)
             //! The vertical position of the Mii's mole
             u16 m_MolePositionY : 5;
