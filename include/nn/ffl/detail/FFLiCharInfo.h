@@ -12,6 +12,10 @@
 extern "C" {
 #endif
 
+/**
+ * @brief A structure for sotring Mii data "uncompressed". This is also used in validity checks.
+ * 
+ */
 typedef struct FFLiCharInfo
 {
     u32                 miiVersion;
@@ -23,6 +27,7 @@ typedef struct FFLiCharInfo
         s32             faceMakeup;
         s32             hairType;
         s32             hairColor;
+        //The direction of the Mii's hair.
         s32             hairDir;
         s32             eyeType;
         s32             eyeColor;
@@ -55,22 +60,34 @@ typedef struct FFLiCharInfo
         s32             glassColor;
         s32             glassScale;
         s32             glassPositionY;
+        //Whether the mole is enabled or not.
         s32             moleType;
+        //The scale of the mole.
         s32             moleScale;
+        //X position of the mole.
         s32             molePositionX;
+        //Y position of the mole.
         s32             molePositionY;
     } parts;
     u32                 height;
     u32                 build;
     u16                 name[10 + 1];
     u16                 creatorName[10 + 1];
+    //The gender of the Mii.
     FFLGender           gender;
+    //The birthday month of the Mii.
     u32                 birthMonth;
+    //The birthday day of the Mii.
     u32                 birthDay;
+    //The Mii's favorite color (shirt color)
     u32                 favoriteColor;
+    //Whether the Mii is a favorite or not.
     u8                  favoriteMii;
+    //Wwhether or not the Mii can be copied.
     u8                  copyable;
+
     u8                  ngWord;
+    //Whether the Mii is local only or not.
     u8                  localOnly;
     u32                 regionMove;
     FFLFontRegion       fontRegion;
@@ -85,11 +102,19 @@ typedef struct FFLiCharInfo
 FFLiCharInfo;
 NN_STATIC_ASSERT(sizeof(FFLiCharInfo) == 0x120);
 
+/**
+ * @brief Values for why a validity check failed.
+ * 
+ */
 typedef enum FFLiVerifyCharInfoReason
 {
+    //! No error.
     FFLI_VERIFY_CHAR_INFO_REASON_OK                         =  0,
+    //! Face type is invalid
     FFLI_VERIFY_CHAR_INFO_REASON_FACE_TYPE_INVALID          =  1,
+    //! Faceline Color is invalid.
     FFLI_VERIFY_CHAR_INFO_REASON_FACELINE_COLOR_INVALID     =  2,
+    //! Faceline is invalid.
     FFLI_VERIFY_CHAR_INFO_REASON_FACE_LINE_INVALID          =  3,
     FFLI_VERIFY_CHAR_INFO_REASON_FACE_MAKE_INVALID          =  4,
     FFLI_VERIFY_CHAR_INFO_REASON_HAIR_TYPE_INVALID          =  5,

@@ -17,7 +17,14 @@ u32 TypeToSize(FFLiSwapEndianType type)
 }
 
 }
-
+/**
+ * @brief Perform endian swapping on a group of @ref FFLiSwapEndianDesc
+ * 
+ * @param ptr 
+ * @param pDesc 
+ * @param num 
+ * @return u32 
+ */
 u32 FFLiSwapEndianGroup(void* ptr, const FFLiSwapEndianDesc* pDesc, u32 num)
 {
     void* pPtr = ptr;

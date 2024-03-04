@@ -42,7 +42,6 @@ public:
         m_MiiVersion = version;
     }
     /** 
-     * 
      * @brief Get the Mii's version.
     */
     u8 MiiVersion() const
@@ -1180,11 +1179,6 @@ private:
 NN_STATIC_ASSERT_IS_POD(FFLiMiiDataOfficial);
 NN_STATIC_ASSERT(sizeof(FFLiMiiDataOfficial) == 0x5C);
 
-/**
- * @brief It's asserted that this is the size of FFLStoreData
- * 
- */
-
 #define FFL_STOREDATA_SIZE  (0x60)
 
 /**
@@ -1197,7 +1191,15 @@ NN_STATIC_ASSERT(sizeof(FFLiMiiDataOfficial) == 0x5C);
 class FFLiStoreData : public FFLiMiiDataOfficial
 {
 public:
+    /**
+     * @brief 
+     * 
+     */
     void SetCRC();
+    /**
+     * @brief 
+     * 
+     */
     void SwapEndian();
 
 private:
@@ -1214,11 +1216,12 @@ NN_STATIC_ASSERT(sizeof(FFLiStoreData) == FFL_STOREDATA_SIZE);
  * Essentially an alias of FFLStoreData.
  */
 
-struct FFLiStoreDataCFL : FFLStoreData
-{
+struct FFLiStoreDataCFL : FFLStoreData{
 };
+
 NN_STATIC_ASSERT_IS_POD(FFLiStoreDataCFL);
 NN_STATIC_ASSERT(sizeof(FFLiStoreDataCFL) == FFL_STOREDATA_SIZE);
+
 /**
  * @ingroup MiiDataTypes
  * @brief An extension of @ref FFLiMiiDataCore
@@ -1249,28 +1252,29 @@ public:
         return m_FaceFlag >> 2 & 1;
     }
 
-    u16 Gender() const
-    {
+    u16 Gender() const{
         return m_Flag >> 14 & 1;
     }
 
-    u16 BirthMonth() const
-    {
+    u16 BirthMonth() const{
         return m_Flag >> 10 & 0xF;
     }
 
-    u16 BirthDay() const
-    {
+    u16 BirthDay() const{
         return m_Flag >> 5 & 0x1F;
     }
 
-    u16 FavoriteColor() const
-    {
+    u16 FavoriteColor() const{
         return m_Flag >> 1 & 0xF;
     }
 
-    bool FavoriteMii() const
-    {
+    /**
+     * @brief Get if the Mii is a favorite
+     * 
+     * @return true: Mii is favorited.
+     * @return false: Mii is not favorited.
+     */
+    bool FavoriteMii() const{
         return m_Flag & 1;
     }
 

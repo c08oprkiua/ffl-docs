@@ -4,6 +4,10 @@
 #include <nn/ffl/FFLiDatabaseFileHidden.h>
 #include <nn/ffl/FFLiDatabaseFileOfficial.h>
 
+/**
+ * @brief A combination structure containing a @ref FFLIDatabaseFileOfficial and a @ref FFLiDatabaseFileHidden.
+ * 
+ */
 struct FFLiDatabaseFile
 {
     FFLiDatabaseFileOfficial    official;
