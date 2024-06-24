@@ -12,6 +12,10 @@ enum FFLiSwapEndianType
     FFLI_SWAP_ENDIAN_TYPE_U32   = 2
 };
 
+/**
+ * @brief A struct for endian swapping values
+ * 
+ */
 struct FFLiSwapEndianDesc
 {
     FFLiSwapEndianType  type;

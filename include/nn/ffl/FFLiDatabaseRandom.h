@@ -20,7 +20,22 @@ public:
     FFLResult UpdateMiddleDB(FFLiMiddleDB* pMiddleDB);
 
 private:
+    /**
+     * @brief 
+     * 
+     * @param pGender 
+     * @param pAge 
+     * @param pRace 
+     */
     void DetermineParam(FFLGender* pGender, FFLAge* pAge, FFLRace* pRace);
+    /**
+     * @brief Get a random Mii from the database.
+     * 
+     * @param pCharInfo 
+     * @param gender 
+     * @param age 
+     * @param race 
+     */
     void Get(FFLiCharInfo* pCharInfo, FFLGender gender, FFLAge age, FFLRace race);
 
 private:

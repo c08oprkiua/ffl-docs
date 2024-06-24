@@ -9,6 +9,7 @@ extern "C" {
 
 typedef enum FFLResult
 {
+    //No errors occured
     FFL_RESULT_OK                       =  0,
     FFL_RESULT_ERROR                    =  1,
     FFL_RESULT_HDB_EMPTY                =  2,   // I think

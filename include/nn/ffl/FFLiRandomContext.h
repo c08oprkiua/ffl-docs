@@ -3,11 +3,26 @@
 
 #include <nn/ffl/types.h>
 
+/**
+ * @brief A random number generator for FFL.
+ * 
+ */
 class FFLiRandomContext
 {
 public:
+    /**
+     * @brief Initalize the context.
+     * 
+     * @param seed A seed to initialize the context with.
+     */
     void Init(u32 seed);
 
+    /**
+     * @brief Get a random unsigned 16 bit integer.
+     * 
+     * @param max ?????
+     * @return A randomized 16 bit unsigned integer.
+     */
     u16 Random(u16 max);
 
 private:

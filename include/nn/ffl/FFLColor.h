@@ -10,7 +10,7 @@ extern "C" {
 /**
  * @brief The in color type in FFL
  * 
- * This is the in-house type used to store color values in FFL.
+ * This is the in-house type used to store color values in FFL. It's stored in an RGBA float format.
  * This is NOT the same as @ref FavoriteColor
  */
 
