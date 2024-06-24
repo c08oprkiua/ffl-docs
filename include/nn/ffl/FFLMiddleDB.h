@@ -12,9 +12,23 @@ extern "C" {
 #endif
 
 typedef struct FFLMiddleDB FFLMiddleDB;
-
+/**
+ * @brief Get the allocation size of a miiDataNum sized array of 
+ * FFLiMiiDataOfficial types.
+ * 
+ * @param miiDataNum The size of the array.
+ * @return u32 The end byte size of the array.
+ */
 u32 FFLGetMiddleDBBufferSize(u16 miiDataNum);
 
+/**
+ * @brief 
+ * 
+ * @param pMiddleDB 
+ * @param type 
+ * @param pMiiData 
+ * @param miiDataNum 
+ */
 void FFLInitMiddleDB(FFLMiddleDB* pMiddleDB, FFLMiddleDBType type, void* pMiiData, u16 miiDataNum);
 FFLResult FFLUpdateMiddleDB(FFLMiddleDB* pMiddleDB);
 

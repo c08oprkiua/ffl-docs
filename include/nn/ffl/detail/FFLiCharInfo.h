@@ -85,24 +85,49 @@ typedef struct FFLiCharInfo
 FFLiCharInfo;
 NN_STATIC_ASSERT(sizeof(FFLiCharInfo) == 0x120);
 
+/**
+ * @brief This enum contains the errors to return for verifying FFLiCharInfo 
+ * via FFLiVerifyCharInfoWithReason.
+ * 
+ * These errors (except FFLI_VERIFY_CHAR_INFO_REASON_OK) mean that a value
+ * was found to be outside of the bounds of the valid range for that value.
+ * 
+ */
 typedef enum FFLiVerifyCharInfoReason
 {
+    //No errors were found in verifying the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_OK                         =  0,
+    //There was an error with the face type in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_FACE_TYPE_INVALID          =  1,
+    //There was an error with the faceline color in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_FACELINE_COLOR_INVALID     =  2,
+    //There was an error with the faceline in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_FACE_LINE_INVALID          =  3,
+    //There was an error with the face makeup in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_FACE_MAKE_INVALID          =  4,
+    //There was an error with the hair type in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_HAIR_TYPE_INVALID          =  5,
+    //There was an error with the hair color in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_HAIR_COLOR_INVALID         =  6,
+    //There was an error with the hair direction in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_HAIR_DIR_INVALID           =  7,
+    //There was an error with the eye type in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_TYPE_INVALID           =  8,
+    //There was an error with the eye color in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_COLOR_INVALID          =  9,
+    //There was an error with the horizontal eye scale in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_SCALE_INVALID          = 10,
+    //There was an error with the vertical eye scale in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_SCALE_Y_INVALID        = 11,
+    //There was an error with the eye rotation in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_ROTATE_INVALID         = 12,
+    //There was an error with the eye spacing in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_SPACING_INVALID        = 13,
+    //There was an error with the vertical eye position in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_POS_INVALID            = 14,
+    //There was an error with the eyebrow type in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYEBROW_TYPE_INVALID       = 15,
+
     FFLI_VERIFY_CHAR_INFO_REASON_EYEBROW_COLOR_INVALID      = 16,
     FFLI_VERIFY_CHAR_INFO_REASON_EYEBROW_SCALE_INVALID      = 17,
     FFLI_VERIFY_CHAR_INFO_REASON_EYEBROW_SCALE_Y_INVALID    = 18,
@@ -146,7 +171,25 @@ typedef enum FFLiVerifyCharInfoReason
 }
 FFLiVerifyCharInfoReason;
 
+/**
+ * @brief Verify a FFLiCharInfo, but simply get whether it is invalid or not.
+ * 
+ * @param pCharInfo The FFLiCharInfo to check.
+ * @param verifyName If true, the name will also be checked for validity.
+ * @return BOOL True if the data is valid, else false.
+ */
 BOOL FFLiVerifyCharInfo(const FFLiCharInfo* pCharInfo, BOOL verifyName);
+/**
+ * @brief Verify the provided FFLiCharInfo, and return the first found reason it is invalid,
+ * if one is found. Otherwise, this will return FFLI_VERIFY_CHAR_INFO_REASON_OK.
+ * 
+ * Note: This will return upon the first error found, meaning you will need to run this multiple 
+ * times on the same data to find several different invalid data fields (after correcting previously found ones)
+ * 
+ * @param pCharInfo The FFLiCharInfo to check.
+ * @param verifyName If true, the name will also be checked for validity.
+ * @return FFLiVerifyCharInfoReason The first found invalid parameter in pCharInfo, if one is found.
+ */
 FFLiVerifyCharInfoReason FFLiVerifyCharInfoWithReason(const FFLiCharInfo* pCharInfo, BOOL verifyName);
 
 #ifdef __cplusplus

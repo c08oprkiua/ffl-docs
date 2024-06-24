@@ -25,7 +25,7 @@
  * 
  * This is the base class from which various other data types derive.
  * The variables documented here are not public, and are instead accessed and retrieved with their corresponding set/get functions.
- * This should be used as a reference, but @b not as an implementation; See @ref FFLiMiiDataCoreRFL and @ref FFLStoreData
+ * This this class should be used as a reference, but @b not as an implementation; See @ref FFLiMiiDataCoreRFL for such uses.
  * 
 */
 
@@ -81,7 +81,6 @@ public:
         m_NgWord = enable;
     }
     /**
-     * @ingroup NgWord
      * @brief Get the profanity flag on the Mii.
      * 
      * This will be enabled if the Mii contains profanity in either its creator or name field.
@@ -90,12 +89,20 @@ public:
     {
         return m_NgWord;
     }
-
+    /**
+     * @brief Set the region lock on the Mii.
+     * 
+     * @param regionMove 
+     */
     void SetRegionMove(u16 regionMove)
     {
         m_RegionMove = regionMove;
     }
-
+    /**
+     * @brief Get the current region lock on the Mii.
+     * 
+     * @return u16 
+     */
     u16 RegionMove() const
     {
         return m_RegionMove;
@@ -125,13 +132,19 @@ public:
      * 
      * @brief Set the Font Region.
      * 
+     * This tells software which font file to use when displaying the Mii's string data.
+     * 
      * @param region A @ref FFLFontRegion enum. 
      */
     void SetFontRegion(u16 region)
     {
         m_FontRegion = region;
     }
-
+    /**
+     * @brief Retrieve the font region of the Mii.
+     * 
+     * @return u16 
+     */
     u16 FontRegion() const
     {
         return m_FontRegion;
@@ -229,7 +242,6 @@ public:
         return sizeof(u8) * 2;
     }
     /**
-     * 
      * @brief Set the gender of the Mii.
     */
     void SetGender(u16 gender)
@@ -237,34 +249,54 @@ public:
         m_Gender = gender;
     }
     /**
-     * 
      * @brief Get the gender of the Mii.
     */
     u16 Gender() const
     {
         return m_Gender;
     }
-
+    /**
+     * @brief Set the month of the Mii's birthday.
+     * 
+     * @param month The month of the Mii's birthday.
+     */
     void SetBirthMonth(u16 month)
     {
         m_BirthMonth = month;
     }
-
+    /**
+     * @brief Get the month of the Mii's birthday.
+     * 
+     * @return u16 
+     */
     u16 BirthMonth() const
     {
         return m_BirthMonth;
     }
-
+    /**
+     * @brief Set the day of the Mii's birthday.
+     * 
+     * @param day The day of the Mii's birthday.
+     */
     void SetBirthDay(u16 day)
     {
         m_BirthDay = day;
     }
-
+    /**
+     * @brief Get the day of the Mii's birthday.
+     * 
+     * @return u16 
+     */
     u16 BirthDay() const
     {
         return m_BirthDay;
     }
-
+    /**
+     * @brief Set the Mii's favorite color
+     * 
+     * 
+     * @param value 
+     */
     void SetFavoriteColor(u16 value)
     {
         m_FavoriteColor = value;
@@ -854,6 +886,9 @@ private:
     {
         struct
         {
+            /**
+             * @brief Unused bit
+             */
             u16 m_PlaceHolder   : 1;    // Unused (MSB)
             /**
              * @brief Whether the Mii is favorited in Mii Maker
@@ -861,6 +896,8 @@ private:
             u16 m_FavoriteMii   : 1;    // bool
             /**
              * @brief The Mii's shirt color
+             * 
+             * This usually is the Mii's dress/shirt/attire color in games.
              */
             u16 m_FavoriteColor : 4;
             /**

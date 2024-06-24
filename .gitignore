@@ -42,3 +42,4 @@
 *.opt
 *.ti
 tgt/*
+.vscode/c_cpp_properties.json
