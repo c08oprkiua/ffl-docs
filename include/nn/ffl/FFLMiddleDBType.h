@@ -6,13 +6,19 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+/**
+ * @brief The database type of a FFLiMiddleDB.
+ * 
+ * 
+ */
 typedef enum FFLMiddleDBType
 {
     FFL_MIDDLE_DB_TYPE_HIDDEN_PARAM_RANDOM_UPDATE       = 0,
     FFL_MIDDLE_DB_TYPE_HIDDEN_PARAM_TIME_UPDATE_REVERSE = 1,
     FFL_MIDDLE_DB_TYPE_HIDDEN_PARAM_TIME_UPDATE         = 2,
+    //The database will be filled with random Miis when updated.
     FFL_MIDDLE_DB_TYPE_RANDOM_PARAM                     = 3,
+
     FFL_MIDDLE_DB_TYPE_NET_PARAM                        = 4
 }
 FFLMiddleDBType;

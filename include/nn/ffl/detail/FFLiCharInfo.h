@@ -115,9 +115,9 @@ typedef enum FFLiVerifyCharInfoReason
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_TYPE_INVALID           =  8,
     //There was an error with the eye color in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_COLOR_INVALID          =  9,
-    //There was an error with the horizontal eye scale in the FFLiCharInfo.
+    //There was an error with the eye x scale in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_SCALE_INVALID          = 10,
-    //There was an error with the vertical eye scale in the FFLiCharInfo.
+    //There was an error with the eye y scale in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_SCALE_Y_INVALID        = 11,
     //There was an error with the eye rotation in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_ROTATE_INVALID         = 12,
@@ -127,9 +127,11 @@ typedef enum FFLiVerifyCharInfoReason
     FFLI_VERIFY_CHAR_INFO_REASON_EYE_POS_INVALID            = 14,
     //There was an error with the eyebrow type in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYEBROW_TYPE_INVALID       = 15,
-
+    //There was an error with the eyebrow color in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYEBROW_COLOR_INVALID      = 16,
+    //There was an error with the eyebrow x scale in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYEBROW_SCALE_INVALID      = 17,
+    //There was an error with the eyebrow y scale in the FFLiCharInfo.
     FFLI_VERIFY_CHAR_INFO_REASON_EYEBROW_SCALE_Y_INVALID    = 18,
     FFLI_VERIFY_CHAR_INFO_REASON_EYEBROW_ROTATE_INVALID     = 19,
     FFLI_VERIFY_CHAR_INFO_REASON_EYEBROW_SPACING_INVALID    = 20,
@@ -179,6 +181,7 @@ FFLiVerifyCharInfoReason;
  * @return BOOL True if the data is valid, else false.
  */
 BOOL FFLiVerifyCharInfo(const FFLiCharInfo* pCharInfo, BOOL verifyName);
+
 /**
  * @brief Verify the provided FFLiCharInfo, and return the first found reason it is invalid,
  * if one is found. Otherwise, this will return FFLI_VERIFY_CHAR_INFO_REASON_OK.
@@ -197,7 +200,13 @@ FFLiVerifyCharInfoReason FFLiVerifyCharInfoWithReason(const FFLiCharInfo* pCharI
 }
 
 // --------------------------------------------------------------------------
-
+/**
+ * @brief Verify a FFLiCharInfo, but simply get whether it is invalid or not.
+ * 
+ * @param pCharInfo The FFLiCharInfo to check.
+ * @param verifyName If true, the name will also be checked for validity.
+ * @return BOOL True if the data is valid, else false.
+ */
 BOOL FFLiiVerifyCharInfo(const FFLiCharInfo* pCharInfo, BOOL verifyName);
 
 s32 FFLiiGetEyeRotateOffset(s32 type);
@@ -207,6 +216,13 @@ f32 FFLiiGetAdjustedEyeH(f32 height, s32 type);
 
 // --------------------------------------------------------------------------
 
+/**
+ * @brief Check if the input character is valid for a Mii name.
+ * 
+ * @param c The character to check.
+ * @return true The character is valid.
+ * @return false The character is invalid.
+ */
 bool FFLiIsValidCharacterForName(u16 c);
 
 // --------------------------------------------------------------------------
